@@ -83,7 +83,7 @@ endif
 ifdef LIBRARY
 LIBOBJS := $(OBJECTS) $(LIBRARY_OBJECTS)
 
-$(foreach object,$(LIBOBJS),$(LIBDIR)/lib$(LIBRARY).a($(object)): $(OBJDIR)/$(COMPONENT)/$(object) | $(LIBDIR))
+$(foreach object,$(LIBOBJS),$(eval $(LIBDIR)/lib$(LIBRARY).a($(object)): $(OBJDIR)/$(COMPONENT)/$(object) | $(LIBDIR)))
 
 $(LIBDIR)/lib$(LIBRARY).a: $(foreach object,$(LIBOBJS),$(LIBDIR)/lib$(LIBRARY).a($(object))) | $(LIBDIR)
 	$(RANLIB) $@
